@@ -11,29 +11,20 @@ from mutagen.easyid3 import EasyID3
 
 
 class TagExtractor:
-    """
-    This class extract and view id3 tags in an mp3 file.
-    """
+    """This class extract and view id3 tags in an mp3 file."""
     def __init__(self, file_path):
         """
-        Initialize the class.
+        Initialize the CLASS.
 
         :param file_path: _path to mp3 file
         """
         if not isinstance(file_path, str):
-            raise ValueError('_path must be str')
+            raise ValueError('path must be str')
         if not os.path.isfile(file_path):
-            raise FileNotFoundError('this _path does not contain usr_input file')
+            raise FileNotFoundError('this path does not contain usr_input file')
         if not file_path.endswith('.mp3'):
             raise FileExistsError('this is not mp3 file')
         self._file_path = file_path
-        # print(self._file_path)
-        # test --------
-        # self._path = os.path.split(self._file_path)
-        # if self.path[0]:
-        #     os.chdir(self.path[0])
-        # self._file_path = self.path[1]
-
         # -- Globals. Include all information about track
         self._track_info = {}
         # all tags which must be in track_info dict
@@ -46,7 +37,7 @@ class TagExtractor:
             # artist name is "unknown"
             self._track_info['artist'] = '<unknown>'
             # title is file name without .mp3
-            self._track_info['title'] = self._file_path[:-4]
+            self._track_info['title'] = os.path.split(self._file_path)[1]
         # if track number don`t fill, replace '' to '0'
         if self._track_info['tracknumber'] == '':
             self._track_info['tracknumber'] = '0'
@@ -55,12 +46,9 @@ class TagExtractor:
             self._track_info['date'] = '0'
 
     def __str__(self):
-        """
-        Return track_info in user readable format.
-        """
+        """Return track_info in user readable format."""
         duration = self._track_info['length']
-        bitrate = self._track_info['bitrate']
-        sample_rate = self._track_info['sample_rate']
+        quality = self._track_info['quality']
         track_size = self._track_info['track_size']
         artist = self._track_info['artist']
         title = self._track_info['title']
@@ -68,31 +56,27 @@ class TagExtractor:
         genre = self._track_info['genre']
         track_number = self._track_info['tracknumber']
         year = self._track_info['date']
-        result = 'Track info:\nDuration: {}\nQuality: {} kbps, {} Hz\nTrack s' \
+        result = 'Track info:\nDuration: {}\nQuality: {}\nTrack s' \
                  'ize: {} mb\n{}\nArtist: {}\nTitle: {}\nAlbum: {}\nGenre: {}' \
                  '\nTrack number: {};  Year: {}'\
-            .format(duration, bitrate, sample_rate, track_size, '-' * 27,
+            .format(duration, quality, track_size, '-' * 27,
                     artist, title, album, genre, track_number, year)
         return result
 
     @property
     def track_info(self):
-        """
-        Return track_info dictionary.
-        """
+        """Return track_info dictionary."""
         return self._track_info
 
     @property
     def file_path(self):
-        """
-        Return _path to file.
-        """
+        """Return _path to file."""
         return self._file_path
 
     def _noHeaderError(self):
         # If track don`t have any id3 tags, add them
         # open track as file
-        meta = mutagen.File(self._file_path, easy = True)
+        meta = mutagen.File(self._file_path, easy=True)
         # add empty tags
         for t in self.all_tag_list:  # t - tag
             meta[t] = ''
@@ -102,9 +86,7 @@ class TagExtractor:
         return EasyID3(self._file_path)
 
     def _update_info(self):
-        """
-        Filling track_info dict with values.
-        """
+        """Filling track_info dict with values."""
         # -- Track info
         # get dictionary of information about track
         track = MP3(self._file_path).info.__dict__
@@ -135,7 +117,8 @@ class TagExtractor:
         self._tag_edit_obj = tag
 
         # -- Update track_info dict
-        self._track_info.update({'bitrate': bitrate})
+        self._track_info.update({'quality': '{} kbps, {} Hz'.format(bitrate,
+                                                                    sample_rate)})
         # convert seconds to minutes:seconds format
         minutes, seconds = divmod(length, 60)
         # convert to integer
@@ -143,7 +126,6 @@ class TagExtractor:
         if seconds < 10:
             seconds = '0' + str(seconds)
         self._track_info.update({'length': '{}:{}'.format(minutes, seconds)})
-        self._track_info.update({'sample_rate': sample_rate})
         for t in self.all_tag_list:  # t - tag
             if t in tag_list:
                 try:
@@ -154,44 +136,7 @@ class TagExtractor:
             else:
                 self._track_info.update({t: ''})
 
-    def edit_tag(self, tag, value):
-        """
-        Can edit mp3 tags.
-
-        :param tag: one of the tags
-        :param value: new value
-        """
-        assert isinstance(tag, str), 'tag may be str'
-        assert isinstance(value, str), 'value may be str'
-        self._tag_edit_obj[tag] = value
-        self._tag_edit_obj.save()
-        self._update_info()
-
-    @property
-    def path(self):
-        return self._path
-
 
 if __name__ == '__main__':
-    c = 1
-    # l = os.listdir(os.getcwd())
-    # print(l[161])
-    # m = EasyID3('Fun. - Tonight We Are Young.mp3')
-    # print(m.get('genre'))
-    # for i in os.listdir(os.getcwd()):
-    #     x = TagExtractor(i)
-    #     print('№{}\n{}'.format(c, x))
-    #     c += 1
-    #     print()
-    # os.chdir('D:\\Music\\Music\\')  # test
     x = TagExtractor('D:/Music/Music/7!! - Lovers.mp3')
     print(x)
-    x.edit_tag('tracknumber', '325')
-    print(x)
-    # class TagEditor:
-    #     def __init__(self, track_info=None):
-    #         if isinstance(track_info, dict):
-    #             self._track_info = track_info
-    #         else:
-    #             if track_info is not None:
-    #                 raise ValueError('info must be in dict type')

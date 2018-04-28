@@ -10,7 +10,7 @@ from pygame import mixer
 
 class Player:
     """
-    This class can play mp3 files.
+    This class can play mp3 tracks_information.
     """
     def __init__(self, file_path=None):
         """
@@ -30,11 +30,12 @@ class Player:
                 raise ValueError('_path must be str')
         mixer.init()
         mixer.music.load(file_path)  # load track
+        self._playing = False
 
-    @staticmethod
-    def play():
+    def play(self):
         """Start playing current file."""
         mixer.music.play()
+        self._playing = True
 
     @staticmethod
     def pause():
@@ -46,10 +47,10 @@ class Player:
         """Continue playing current track, after pause."""
         mixer.music.unpause()
 
-    @staticmethod
-    def stop():
+    def stop(self):
         """Stop playing current track."""
         mixer.music.stop()
+        self._playing = False
 
 
 if __name__ == '__main__':

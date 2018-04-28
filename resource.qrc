@@ -1,11 +1,14 @@
 <RCC>
   <qresource prefix="icons">
-    <file>pause_icon.png</file>
-    <file>play_icon.png</file>
-    <file>stop_icon.png</file>
-    <file>exit_icon.png</file>
-    <file>save_icon.png</file>
-    <file>add_file_icon.png</file>
-    <file>add_folder_icon.png</file>
+    <file>icons/add_file_icon.png</file>
+    <file>icons/add_folder_icon.png</file>
+    <file>icons/exit_icon.png</file>
+    <file>icons/next_icon.png</file>
+    <file>icons/pause_icon.png</file>
+    <file>icons/play_icon.png</file>
+    <file>icons/prev_icon.png</file>
+    <file>icons/song_icon.png</file>
+    <file>icons/stop_icon.png</file>
+    <file>icons/window_icon.png</file>
   </qresource>
 </RCC>

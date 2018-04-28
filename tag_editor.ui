@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>781</width>
-    <height>539</height>
+    <width>854</width>
+    <height>599</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(82,134,236);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -21,8 +24,18 @@
        <enum>Qt::Vertical</enum>
       </property>
       <widget class="QTableWidget" name="tableWidgetItems">
+       <property name="toolTip">
+        <string>Сontains all files imported by the user</string>
+       </property>
+       <property name="statusTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="styleSheet">
-        <string notr="true">border: none;</string>
+        <string notr="true">border: none;
+background-color: rgb(247, 247, 247);</string>
        </property>
        <attribute name="horizontalHeaderVisible">
         <bool>true</bool>
@@ -74,8 +87,15 @@
        </column>
       </widget>
       <widget class="QTableWidget" name="tableWidget">
+       <property name="toolTip">
+        <string>Contains all the tags that are in the selected track</string>
+       </property>
+       <property name="statusTip">
+        <string/>
+       </property>
        <property name="styleSheet">
-        <string notr="true">border: none;</string>
+        <string notr="true">border: none;
+background-color: rgb(247, 247, 247);</string>
        </property>
        <attribute name="horizontalHeaderDefaultSectionSize">
         <number>230</number>
@@ -116,33 +136,28 @@
          <string>6</string>
         </property>
        </row>
+       <row>
+        <property name="text">
+         <string>7</string>
+        </property>
+       </row>
        <column>
         <property name="text">
          <string>Tag</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>11</pointsize>
+          <pointsize>13</pointsize>
          </font>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>Original Value</string>
+         <string>Value</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>New Value</string>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
+          <pointsize>13</pointsize>
          </font>
         </property>
        </column>
@@ -152,6 +167,7 @@
         </property>
         <property name="font">
          <font>
+          <pointsize>10</pointsize>
           <weight>75</weight>
           <bold>true</bold>
          </font>
@@ -164,6 +180,11 @@
         <property name="text">
          <string/>
         </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="flags">
          <set>ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
         </property>
@@ -174,6 +195,7 @@
         </property>
         <property name="font">
          <font>
+          <pointsize>10</pointsize>
           <weight>75</weight>
           <bold>true</bold>
          </font>
@@ -186,6 +208,11 @@
         <property name="text">
          <string/>
         </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="flags">
          <set>ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
         </property>
@@ -196,6 +223,7 @@
         </property>
         <property name="font">
          <font>
+          <pointsize>10</pointsize>
           <weight>75</weight>
           <bold>true</bold>
          </font>
@@ -208,6 +236,11 @@
         <property name="text">
          <string/>
         </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="flags">
          <set>ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
         </property>
@@ -218,6 +251,7 @@
         </property>
         <property name="font">
          <font>
+          <pointsize>10</pointsize>
           <weight>75</weight>
           <bold>true</bold>
          </font>
@@ -230,6 +264,11 @@
         <property name="text">
          <string/>
         </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="flags">
          <set>ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
         </property>
@@ -240,6 +279,7 @@
         </property>
         <property name="font">
          <font>
+          <pointsize>10</pointsize>
           <weight>75</weight>
           <bold>true</bold>
          </font>
@@ -252,6 +292,11 @@
         <property name="text">
          <string/>
         </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="flags">
          <set>ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
         </property>
@@ -262,6 +307,7 @@
         </property>
         <property name="font">
          <font>
+          <pointsize>10</pointsize>
           <weight>75</weight>
           <bold>true</bold>
          </font>
@@ -274,6 +320,39 @@
         <property name="text">
          <string/>
         </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="6" column="0">
+        <property name="text">
+         <string>Quality</string>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="6" column="1">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="flags">
          <set>ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
         </property>
@@ -283,16 +362,43 @@
     </item>
    </layout>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(204, 204, 204);</string>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAdd_Folder"/>
+   <addaction name="actionAdd_File"/>
+   <addaction name="separator"/>
+   <addaction name="actionPlay"/>
+   <addaction name="actionPause"/>
+   <addaction name="actionStop"/>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>781</width>
+     <width>854</width>
      <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(139, 157, 195);</string>
+    </property>
     <property name="title">
      <string>&amp;File</string>
     </property>
@@ -312,40 +418,19 @@
    <addaction name="menuFile"/>
    <addaction name="menu_Player"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
-  <widget class="QToolBar" name="toolBar">
-   <property name="windowTitle">
-    <string>toolBar</string>
-   </property>
-   <property name="toolButtonStyle">
-    <enum>Qt::ToolButtonTextUnderIcon</enum>
-   </property>
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>true</bool>
-   </attribute>
-   <addaction name="actionAdd_Folder"/>
-   <addaction name="actionAdd_File"/>
-   <addaction name="separator"/>
-   <addaction name="actionPlay"/>
-   <addaction name="actionPause"/>
-   <addaction name="actionStop"/>
-  </widget>
   <action name="actionAdd_Folder">
    <property name="checkable">
     <bool>false</bool>
    </property>
    <property name="icon">
     <iconset resource="resource.qrc">
-     <normaloff>:/icons/add_folder_icon.png</normaloff>:/icons/add_folder_icon.png</iconset>
+     <normaloff>:/icons/icons/add_folder_icon.png</normaloff>:/icons/icons/add_folder_icon.png</iconset>
    </property>
    <property name="text">
-    <string>A&amp;dd Folder</string>
+    <string>Ope&amp;n Folder</string>
    </property>
    <property name="toolTip">
-    <string>Add a folder to the tagger</string>
+    <string>Open a folder to the tagger</string>
    </property>
    <property name="statusTip">
     <string>Add a folder to the tagger</string>
@@ -360,13 +445,13 @@
   <action name="actionAdd_File">
    <property name="icon">
     <iconset resource="resource.qrc">
-     <normaloff>:/icons/add_file_icon.png</normaloff>:/icons/add_file_icon.png</iconset>
+     <normaloff>:/icons/icons/add_file_icon.png</normaloff>:/icons/icons/add_file_icon.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Add File</string>
+    <string>&amp;Open File</string>
    </property>
    <property name="toolTip">
-    <string>Add files to the tagger</string>
+    <string>Open files to the tagger</string>
    </property>
    <property name="statusTip">
     <string>Add files to the tagger</string>
@@ -375,28 +460,10 @@
     <string>Ctrl+O</string>
    </property>
   </action>
-  <action name="actionSave">
-   <property name="icon">
-    <iconset resource="resource.qrc">
-     <normaloff>:/icons/save_icon.png</normaloff>:/icons/save_icon.png</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Save</string>
-   </property>
-   <property name="toolTip">
-    <string>Save changes</string>
-   </property>
-   <property name="statusTip">
-    <string>Save changes</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+S</string>
-   </property>
-  </action>
   <action name="actionExit">
    <property name="icon">
     <iconset resource="resource.qrc">
-     <normaloff>:/icons/exit_icon.png</normaloff>:/icons/exit_icon.png</iconset>
+     <normaloff>:/icons/icons/exit_icon.png</normaloff>:/icons/icons/exit_icon.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Exit</string>
@@ -414,10 +481,16 @@
   <action name="actionPlay">
    <property name="icon">
     <iconset resource="resource.qrc">
-     <normaloff>:/icons/play_icon.png</normaloff>:/icons/play_icon.png</iconset>
+     <normaloff>:/icons/icons/play_icon.png</normaloff>:/icons/icons/play_icon.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Play</string>
+   </property>
+   <property name="toolTip">
+    <string>Start playing selected track</string>
+   </property>
+   <property name="statusTip">
+    <string>Play</string>
    </property>
    <property name="shortcut">
     <string>Space</string>
@@ -429,10 +502,16 @@
   <action name="actionPause">
    <property name="icon">
     <iconset resource="resource.qrc">
-     <normaloff>:/icons/pause_icon.png</normaloff>:/icons/pause_icon.png</iconset>
+     <normaloff>:/icons/icons/pause_icon.png</normaloff>:/icons/icons/pause_icon.png</iconset>
    </property>
    <property name="text">
     <string>P&amp;ause</string>
+   </property>
+   <property name="toolTip">
+    <string>Pause track which now playing</string>
+   </property>
+   <property name="statusTip">
+    <string>Pause</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Space</string>
@@ -441,10 +520,16 @@
   <action name="actionStop">
    <property name="icon">
     <iconset resource="resource.qrc">
-     <normaloff>:/icons/stop_icon.png</normaloff>:/icons/stop_icon.png</iconset>
+     <normaloff>:/icons/icons/stop_icon.png</normaloff>:/icons/icons/stop_icon.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Stop</string>
+   </property>
+   <property name="toolTip">
+    <string>Stop playing current track</string>
+   </property>
+   <property name="statusTip">
+    <string>Stop</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Alt+S</string>

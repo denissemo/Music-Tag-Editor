@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/web_search_icon.png</file>
     <file>icons/add_file_icon.png</file>
     <file>icons/add_folder_icon.png</file>
     <file>icons/exit_icon.png</file>

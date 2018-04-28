@@ -2,12 +2,13 @@ import sys
 import os
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, \
-    QProgressBar, QMessageBox, QTableWidgetItem
+    QProgressBar, QMessageBox, QTableWidgetItem, QWidget
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 import resource_rc
 from tag_extractor import TagExtractor
 from player import Player
+import webbrowser
 
 
 class Tag(QMainWindow):
@@ -31,6 +32,7 @@ class Tag(QMainWindow):
         stylesheet = "::section{Background-color:rgb(204,204,204);}"
         self.tracksTable.horizontalHeader().setStyleSheet(stylesheet)
         self.tagsTable.horizontalHeader().setStyleSheet(stylesheet)
+        self.searchDialog = SearchDialog()  # for web search
 
         self.initUI()
 
@@ -51,6 +53,10 @@ class Tag(QMainWindow):
         # close app action
         exit_action = self.ui.actionExit
         exit_action.triggered.connect(self.show_quit_message)
+
+        # search on web actioon
+        search_on_web_action = self.ui.actionSearch_on_Web
+        search_on_web_action.triggered.connect(self.show_web_search_dialog)
 
         self.ui.show()
 
@@ -110,6 +116,7 @@ class Tag(QMainWindow):
                                      QMessageBox.No)
         if reply == QMessageBox.Yes:
             self.ui.close()
+            self.searchDialog.ui.close()
 
     def show_file_dialog(self):
         self.files.clear()
@@ -174,6 +181,30 @@ class Tag(QMainWindow):
                                 | Qt.ItemIsEnabled)
                 item_for_icon = self.tracksTable.item(r, 0)
                 item_for_icon.setIcon(QIcon(':/icons/icons/song_icon.png'))
+
+    def show_web_search_dialog(self):
+        self.searchDialog.ui.show()
+
+
+class SearchDialog(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.ui = uic.loadUi('search_on_web.ui')
+        self.ui.setWindowTitle('Search track on Web')
+        self.ui.setWindowIcon(QIcon(':/icons/icons/web_search_icon.png'))
+        self.search_btn = self.ui.searchButton
+        self.url = self.ui.url
+        self.init()
+
+    def init(self):
+        self.search_btn.clicked.connect(self.btn_clicked)
+
+    def btn_clicked(self):
+        usr_inp = self.url.text()
+        if usr_inp != '':
+            webbrowser.open('https://soundcloud.com/search/sounds?q={}'.
+                            format(usr_inp))
+            self.ui.hide()
 
 
 if __name__ == '__main__':
